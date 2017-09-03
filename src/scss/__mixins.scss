@@ -1,0 +1,42 @@
+@mixin clearfix() {
+    &::after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+}
+
+@mixin loadFont($font) {
+	@font-face {
+		font-family: $font;
+		// src: url('/assets/fonts/' + $font + '.eot?#iefix') format('embedded-opentype'),
+		// url('/assets/fonts/' + $font + '.woff2') format('woff2'),
+		// url('/assets/fonts/' + $font + '.woff') format('woff');
+        // src: url('/assets/fonts/' + $font + '.eot');
+        src: url('/assets/fonts/' + $font + '.ttf') format('truetype');
+		font-weight: normal;
+		font-stretch: normal;
+	}
+}
+
+@include loadFont('Lato 100');
+@include loadFont('Lato 100italic');
+@include loadFont('Lato 300');
+@include loadFont('Lato 300italic');
+@include loadFont('Lato regular');
+@include loadFont('Lato italic');
+@include loadFont('Lato 700');
+@include loadFont('Lato 700italic');
+@include loadFont('Lato 900');
+@include loadFont('Lato 900italic');
+
+@include loadFont('Open Sans 300');
+@include loadFont('Open Sans 300italic');
+@include loadFont('Open Sans regular');
+@include loadFont('Open Sans italic');
+@include loadFont('Open Sans 600');
+@include loadFont('Open Sans 600italic');
+@include loadFont('Open Sans 700');
+@include loadFont('Open Sans 700italic');
+@include loadFont('Open Sans 800');
+@include loadFont('Open Sans 800italic');

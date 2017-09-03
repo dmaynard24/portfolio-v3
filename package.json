@@ -1,0 +1,33 @@
+{
+  "name": "dkg-diamonds",
+  "version": "1.0.0",
+  "description": "front-end repo for the DKG diamonds.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmaynard24/dkg-diamonds.git"
+  },
+  "keywords": [
+    "dkg",
+    "diamonds"
+  ],
+  "author": "Dave Maynard",
+  "license": "ISC",
+  "homepage": "https://www.davidkennethgroup.com/",
+  "dependencies": {
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-wrap": "^0.13.0",
+    "run-sequence": "^1.2.2"
+  }
+}
