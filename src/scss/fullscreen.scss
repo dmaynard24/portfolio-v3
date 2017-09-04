@@ -1,0 +1,65 @@
+.fullscreen {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    z-index: 1;
+
+    .page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .page-background-container {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+
+            .page-background {
+                top: 0px;
+                position: relative;
+            }
+        }
+
+        &#home-page {
+            .page-background {
+                background: url('/assets/img/keyboard-headphones.jpg') no-repeat center center;
+                background-size: cover;
+                display: block;
+                width: 100%;
+                height: 100%;
+                max-height: none;
+            }
+        }
+
+        &#about-page {
+            .page-background-container {
+                display: none;
+            }
+
+            .page-background {
+                background: url('/assets/img/focused.jpg') no-repeat center center;
+                background-size: cover;
+                position: fixed;
+                display: block;
+                width: 100%;
+                height: 100%;
+                max-height: none;
+            }
+        }
+
+        .page-content {
+            z-index: 2;
+        }
+    }
+}

@@ -13,7 +13,6 @@ h1 {
         font-size: 80px;
         margin: 0;
         text-align: center;
-        opacity: 0.3;
     }
 }
 
@@ -23,8 +22,30 @@ nav {
     left: 0px;
     width: 100%;
     padding: $nav-padding;
+    z-index: 2;
+
+    &:before {
+        content: '';
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 40vh;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    }
+
+    &:after {
+        content: '';
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 40vh;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    }
 
     .nav-inner {
+        position: relative;
         display: flex;
         align-items: center;
         height: 40px;
@@ -32,13 +53,25 @@ nav {
         .logo {
             font-family: $lato-black;
             font-size: 36px;
-            opacity: 0.3;
+            opacity: 0.6;
         }
 
-        .hamburger {
+        .hamburger-menu {
+            position: absolute;
+            top: 0px;
+            right: 0px;
             width: 40px;
             height: 40px;
-            float: right;
+            padding: 8px 0px 8px 8px;
+
+            .line {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: #ffffff;
+                opacity: 0.6;
+                margin-bottom: 8px;
+            }
         }
     }
 }
@@ -50,6 +83,7 @@ nav {
     width: 100%;
     padding: $nav-padding;
     pointer-events: none;
+    z-index: 2;
 
     .secondary-nav-inner {
         position: relative;
@@ -70,7 +104,7 @@ nav {
                 left: 0px;
                 border-bottom: 1px solid #ffffff;
                 border-left: 1px solid #ffffff;
-                opacity: 0.3;
+                opacity: 0.6;
             }
         }
 
@@ -89,37 +123,29 @@ nav {
                 right: 0px;
                 border-bottom: 1px solid #ffffff;
                 border-right: 1px solid #ffffff;
-                opacity: 0.3;
+                opacity: 0.6;
             }
         }
     }
 }
 
-.fullscreen {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.page {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .fade-in-down {
     transform: translateY(50%);
-    transition: all 0.75s ease-out;
+    transition: all 0.5s ease-out;
     opacity: 0 !important;
 
     &.active {
         transform: translateY(0%);
-        opacity: 0.3 !important;
+        opacity: 1 !important;
     }
+}
+
+.scale-down {
+    transform: scale(0.8);
+    transition: all 0.75s ease-out;
+}
+
+.hide-up {
+    transition: all 0.75s ease-out;
+    top: -100% !important;
 }
