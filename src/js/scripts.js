@@ -12,16 +12,16 @@ $(function() {
 
     var lastMousewheelTime = 0;
     $(window).bind('mousewheel', function(e) {
-        if (lastMousewheelTime === 0) {
-            lastMousewheelTime = Math.round(e.timeStamp);
+        if (lastMousewheelTime === 0) { // first scroll
             if (e.originalEvent.wheelDelta > 0) {
                 snapToPage('up');
             } else {
+                lastMousewheelTime = Math.round(e.timeStamp);
                 snapToPage('down');
             }
         } else {
             var thisTime = Math.round(e.timeStamp);
-            if (thisTime > lastMousewheelTime + 1500) {
+            if (thisTime > lastMousewheelTime + 2250) {
                 lastMousewheelTime = thisTime;
                 if (e.originalEvent.wheelDelta > 0) {
                     snapToPage('up');
@@ -76,15 +76,47 @@ $(function() {
         }
         
         if (!cancel) {
-            $('.page-background-container').addClass('scale-down');
+            // reset
+            $('.below').removeClass('below');
+            $('.above').removeClass('above');
+            $('.slide-in').removeClass('slide-in');
+            $('.hide-up').removeClass('hide-up');
+            $('.hide-down').removeClass('hide-down');
+
+            var lastPageBackgroundContainer = $('.page[data-page-number="' + lastPageNumber + '"] .page-background-container');
             var lastPageBackground = $('.page[data-page-number="' + lastPageNumber + '"] .page-background');
-            setTimeout(function() {
-                lastPageBackground.addClass('hide-up');
-            }, 750);
-            var scrollTo = $('.page[data-page-number="' + pageNumber + '"]')[0].offsetTop;
+            var page = $('.page[data-page-number="' + pageNumber + '"]');
+            var pageBackgroundContainer = $('.page[data-page-number="' + pageNumber + '"] .page-background-container');
+            var pageBackground = $('.page[data-page-number="' + pageNumber + '"] .page-background');
+
+            // set position
+            if (direction == 'up') {
+                pageBackground.addClass('above');
+            } else {
+                pageBackground.addClass('below');
+            }
+
+            // first animations
+            $('.page-background-container').addClass('scale-down');
+            var scrollTo = page[0].offsetTop;
             $('.fullscreen').animate({
                 scrollTop: scrollTo
-            }, 1500);
+            }, 1500, function() {
+                $('.page-background-container').removeClass('scale-down');
+            });
+
+            // second animations
+            setTimeout(function() {
+                if (direction == 'up') {
+                    lastPageBackground.addClass('hide-down');
+                } else {
+                    lastPageBackground.addClass('hide-up');
+                }
+
+                $('.highest-z').removeClass('highest-z');
+                pageBackgroundContainer.addClass('highest-z');
+                pageBackground.addClass('slide-in');
+            }, 750);
         }
     }
 });

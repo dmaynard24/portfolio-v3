@@ -22,7 +22,7 @@ nav {
     left: 0px;
     width: 100%;
     padding: $nav-padding;
-    z-index: 2;
+    z-index: 999999;
 
     &:before {
         content: '';
@@ -83,7 +83,7 @@ nav {
     width: 100%;
     padding: $nav-padding;
     pointer-events: none;
-    z-index: 2;
+    z-index: 999999;
 
     .secondary-nav-inner {
         position: relative;
@@ -138,14 +138,4 @@ nav {
         transform: translateY(0%);
         opacity: 1 !important;
     }
-}
-
-.scale-down {
-    transform: scale(0.8);
-    transition: all 0.75s ease-out;
-}
-
-.hide-up {
-    transition: all 0.75s ease-out;
-    top: -100% !important;
 }
