@@ -10,25 +10,13 @@ $(function() {
 
     init();
 
-    var lastMousewheelTime = 0;
+    var lastPageChangeTime = 0;
     $(window).bind('mousewheel', function(e) {
-        if (lastMousewheelTime === 0) { // first scroll
-            if (e.originalEvent.wheelDelta > 0) {
-                snapToPage('up');
-            } else {
-                lastMousewheelTime = Math.round(e.timeStamp);
-                snapToPage('down');
-            }
+        var time = Math.round(e.timeStamp);
+        if (e.originalEvent.wheelDelta > 0) {
+            snapToPage('up', time);
         } else {
-            var thisTime = Math.round(e.timeStamp);
-            if (thisTime > lastMousewheelTime + 2250) {
-                lastMousewheelTime = thisTime;
-                if (e.originalEvent.wheelDelta > 0) {
-                    snapToPage('up');
-                } else {
-                    snapToPage('down');
-                }
-            }
+            snapToPage('down', time);
         }
     });
 
@@ -44,79 +32,84 @@ $(function() {
         var touchUpTime = Math.round(e.timeStamp);
         if (touchUpTime - touchDownTime > 1000) { // hesitated touchmove
             if (touchUp > touchDown + 30) {
-                snapToPage('up');
+                snapToPage('up', touchUpTime);
             } else if (touchUp < touchDown - 30) {
-                snapToPage('down');
+                snapToPage('down', touchUpTime);
             }
         } else { // instant touchmove
             if (touchUp > touchDown + 15) {
-                snapToPage('up');
+                snapToPage('up', touchUpTime);
             } else if (touchUp < touchDown - 15) {
-                snapToPage('down');
+                snapToPage('down', touchUpTime);
             }
         }
     });
 
-    function snapToPage(direction) {
-        var cancel = false;
-        var lastPageNumber = pageNumber;
+    function snapToPage(direction, time) {
+        // check if it isn't the first page change and if another page animation isn't in progress
+        if (lastPageChangeTime !== 0 && (time < lastPageChangeTime + 2250)) {
+            return false;
+        }
 
+        var lastPageNumber = pageNumber;
         if (direction == 'up') {
-            if (pageNumber !== 1) {
+            if (pageNumber > 1) {
                 pageNumber--;
             } else {
-                cancel = true;
+                return false;
             }
         } else if (direction == 'down') {
-            if (pageNumber !== pageCount) {
+            if (pageNumber < pageCount) {
                 pageNumber++;
             } else {
-                cancel = true;
+                return false;
             }
         }
         
-        if (!cancel) {
-            // reset
-            $('.below').removeClass('below');
-            $('.above').removeClass('above');
-            $('.slide-in').removeClass('slide-in');
-            $('.hide-up').removeClass('hide-up');
-            $('.hide-down').removeClass('hide-down');
+        // update time
+        lastPageChangeTime = time;
+        
+        // reset
+        $('.below').removeClass('below');
+        $('.above').removeClass('above');
+        $('.slide-in').removeClass('slide-in');
+        $('.hide-up').removeClass('hide-up');
+        $('.hide-down').removeClass('hide-down');
 
-            var lastPageBackgroundContainer = $('.page[data-page-number="' + lastPageNumber + '"] .page-background-container');
-            var lastPageBackground = $('.page[data-page-number="' + lastPageNumber + '"] .page-background');
-            var page = $('.page[data-page-number="' + pageNumber + '"]');
-            var pageBackgroundContainer = $('.page[data-page-number="' + pageNumber + '"] .page-background-container');
-            var pageBackground = $('.page[data-page-number="' + pageNumber + '"] .page-background');
+        var lastPageBackgroundContainer = $('.page[data-page-number="' + lastPageNumber + '"] .page-background-container');
+        var lastPageBackground = $('.page[data-page-number="' + lastPageNumber + '"] .page-background');
+        var page = $('.page[data-page-number="' + pageNumber + '"]');
+        var pageBackgroundContainer = $('.page[data-page-number="' + pageNumber + '"] .page-background-container');
+        var pageBackground = $('.page[data-page-number="' + pageNumber + '"] .page-background');
 
-            // set position
-            if (direction == 'up') {
-                pageBackground.addClass('above');
-            } else {
-                pageBackground.addClass('below');
-            }
+        // set position
+        if (direction == 'up') {
+            pageBackground.addClass('above');
+        } else {
+            pageBackground.addClass('below');
+        }
 
-            // first animations
-            $('.page-background-container').addClass('scale-down');
+        // first animations
+        $('.page-background-container').addClass('scale-down');
+        
+        // second animations
+        setTimeout(function() {
             var scrollTo = page[0].offsetTop;
             $('.fullscreen').animate({
                 scrollTop: scrollTo
-            }, 1500, function() {
+            }, 750, $.bez([0.77, 0, 0.175, 1]), function() {
                 $('.page-background-container').removeClass('scale-down');
-            });
+            });    
 
-            // second animations
-            setTimeout(function() {
-                if (direction == 'up') {
-                    lastPageBackground.addClass('hide-down');
-                } else {
-                    lastPageBackground.addClass('hide-up');
-                }
+            if (direction == 'up') {
+                lastPageBackground.addClass('hide-down');
+            } else {
+                lastPageBackground.addClass('hide-up');
+            }
 
-                $('.highest-z').removeClass('highest-z');
-                pageBackgroundContainer.addClass('highest-z');
-                pageBackground.addClass('slide-in');
-            }, 750);
-        }
+            $('.highest-z').removeClass('highest-z');
+            pageBackgroundContainer.addClass('highest-z');
+            pageBackground.addClass('slide-in');
+        }, 750);
     }
 });

@@ -24,7 +24,7 @@
             height: 100%;
             z-index: 1;
             overflow: hidden;
-            transition: all 0.75s ease-out;
+            transition: all 0.75s cubic-bezier(0.165, 0.84, 0.44, 1); // ease-out-quart
 
             &.highest-z {
                 z-index: 2;
@@ -39,20 +39,20 @@
                 top: 0%;
 
                 &.hide-up {
-                    transition: all 0.75s ease-out;
-                    top: -50%;
+                    transition: all 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+                    top: -25%;
                 }
 
                 &.hide-down {
-                    transition: all 0.75s ease-out;
-                    top: 50%;
+                    transition: all 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+                    top: 25%;
                 }
 
                 &.above {
                     top: -100% !important;
 
                     &.slide-in {
-                        transition: all 0.75s ease-out;
+                        transition: all 0.75s cubic-bezier(0.77, 0, 0.175, 1);
                         top: 0% !important;
                     }
                 }
@@ -61,7 +61,7 @@
                     top: 100% !important;
 
                     &.slide-in {
-                        transition: all 0.75s ease-out;
+                        transition: all 0.75s cubic-bezier(0.77, 0, 0.175, 1);
                         top: 0% !important;
                     }
                 }
