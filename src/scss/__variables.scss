@@ -2,8 +2,8 @@ $lato-thin: 'Lato 100', 'Open Sans 300', 'Open Sans', 'Helvetica', 'sans-serif';
 $lato-thin-italic: 'Lato 100italic', 'Open Sans 300italic', 'Open Sans', 'Helvetica', 'sans-serif';
 $lato-light: 'Lato 300', 'Open Sans 300', 'Open Sans', 'Helvetica', 'sans-serif';
 $lato-light-italic: 'Lato 300italic', 'Open Sans 300italic', 'Open Sans', 'Helvetica', 'sans-serif';
-$lato-regular: 'Lato regular', 'Open Sans regular', 'Open Sans', 'Helvetica', 'sans-serif';
-$lato-regular-italic: 'Lato italic', 'Open Sans italic', 'Open Sans', 'Helvetica', 'sans-serif';
+$lato: 'Lato regular', 'Open Sans regular', 'Open Sans', 'Helvetica', 'sans-serif';
+$lato-italic: 'Lato italic', 'Open Sans italic', 'Open Sans', 'Helvetica', 'sans-serif';
 $lato-bold: 'Lato 700', 'Open Sans 700', 'Open Sans', 'Helvetica', 'sans-serif';
 $lato-bold-italic: 'Lato 700italic', 'Open Sans 700italic', 'Open Sans', 'Helvetica', 'sans-serif';
 $lato-black: 'Lato 900', 'Open Sans 800', 'Open Sans', 'Helvetica', 'sans-serif';
@@ -11,14 +11,19 @@ $lato-black-italic: 'Lato 900italic', 'Open Sans 800italic', 'Open Sans', 'Helve
 
 $open-sans-light: 'Open Sans 300', 'Lato 300', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-light-italic: 'Open Sans 300italic', 'Lato 300italic', 'Open Sans', 'Helvetica', 'sans-serif';
-$open-sans-regular: 'Open Sans regular', 'Lato regular', 'Open Sans', 'Helvetica', 'sans-serif';
-$open-sans-regular-italic: 'Open Sans italic', 'Lato italic', 'Open Sans', 'Helvetica', 'sans-serif';
+$open-sans: 'Open Sans regular', 'Lato regular', 'Open Sans', 'Helvetica', 'sans-serif';
+$open-sans-italic: 'Open Sans italic', 'Lato italic', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-semi-bold: 'Open Sans 600', 'Lato regular', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-semi-bold-italic: 'Open Sans 600italic', 'Lato italic', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-bold: 'Open Sans 700', 'Lato 700', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-bold-italic: 'Open Sans 700italic', 'Lato 700italic', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-extra-bold: 'Open Sans 800', 'Lato 900', 'Open Sans', 'Helvetica', 'sans-serif';
 $open-sans-extra-bold-italic: 'Open Sans 800italic', 'Lato 900italic', 'Open Sans', 'Helvetica', 'sans-serif';
+
+$screen-xs-max: 767px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
 
 $scrollbar-width: 5px;
 $nav-padding: 20px;

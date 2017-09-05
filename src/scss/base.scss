@@ -1,17 +1,28 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
-    font-family: $lato-regular;
+    font-family: $open-sans-light;
     font-size: 14px;
     line-height: 1.6;
-    letter-spacing: -0.05em;
     background: #000000;
     color: #ffffff;
+    @media (min-width: $screen-sm) {
+        font-size: 16px;
+    }
 }
 
 h1 {
     &.headline {
-        font-family: $lato-bold;
-        font-size: 80px;
+        font-family: $lato;
+        font-size: 56px;
         margin: 0;
+
+        @media (min-width: $screen-sm) {
+            font-size: 80px;
+        }
     }
 }
 

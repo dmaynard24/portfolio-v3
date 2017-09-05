@@ -13,8 +13,11 @@
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         position: relative;
+        @media (min-width: $screen-sm) {
+            justify-content: center;
+        }
 
         .page-background-container {
             position: fixed;
@@ -91,6 +94,12 @@
 
         .page-content {
             z-index: 3;
+
+            p {
+                margin: 20px 0px;
+                padding-left: 5px;
+                max-width: 580px;
+            }
         }
     }
 }
