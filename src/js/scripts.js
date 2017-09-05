@@ -3,25 +3,21 @@ $(function() {
     var pageNumber = 1;
     var pageCount = $('.page').length;
 
-    function init() {
-        $('.loading').removeClass('loading');
+    function onLoad() {
+        $('.page-background-container.loading').addClass('loaded');
 
         setTimeout(function() {
             $('.nav-inner, .secondary-nav-inner').addClass('in-position');
             $('.page-background-container').removeClass('scale-down');
-            $('.page-content').addClass('loaded');
+            $('.page-content .loading').addClass('loaded');
             setTimeout(function() {
                 loading = false;
             }, 750);
         }, 750);
-
-        // $('.fade-in-down').each(function() {
-        //     $(this).addClass('active');
-        // });
     }
 
     $(window).on('load', function() {
-        init();
+        onLoad();
     });
 
     var lastPageChangeTime = 0;

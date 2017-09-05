@@ -27,3 +27,7 @@ $screen-lg: 1200px;
 
 $scrollbar-width: 5px;
 $nav-padding: 20px;
+
+$ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
