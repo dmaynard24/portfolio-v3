@@ -1,14 +1,28 @@
 $(function() {
+    var loading = true;
     var pageNumber = 1;
     var pageCount = $('.page').length;
 
     function init() {
-        $('.fade-in-down').each(function() {
-            $(this).addClass('active');
-        });
+        $('.loading').removeClass('loading');
+
+        setTimeout(function() {
+            $('.nav-inner, .secondary-nav-inner').addClass('in-position');
+            $('.page-background-container').removeClass('scale-down');
+            $('.page-content').addClass('loaded');
+            setTimeout(function() {
+                loading = false;
+            }, 750);
+        }, 750);
+
+        // $('.fade-in-down').each(function() {
+        //     $(this).addClass('active');
+        // });
     }
 
-    init();
+    $(window).on('load', function() {
+        init();
+    });
 
     var lastPageChangeTime = 0;
     $(window).bind('mousewheel', function(e) {
@@ -46,8 +60,8 @@ $(function() {
     });
 
     function snapToPage(direction, time) {
-        // check if it isn't the first page change and if another page animation isn't in progress
-        if (lastPageChangeTime !== 0 && (time < lastPageChangeTime + 2250)) {
+        // check if done loading, isn't the first page change and if another page animation isn't in progress
+        if (loading || (lastPageChangeTime !== 0 && (time < lastPageChangeTime + 2250))) {
             return false;
         }
 
