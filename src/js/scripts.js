@@ -117,6 +117,8 @@ $(function() {
                 lastPageBackground.addClass('hide-up');
             }
 
+            $('.second-highest-z').removeClass('second-highest-z');
+            lastPageBackgroundContainer.addClass('second-highest-z');
             $('.highest-z').removeClass('highest-z');
             pageBackgroundContainer.addClass('highest-z');
             pageBackground.addClass('slide-in');

@@ -29,8 +29,13 @@
             overflow: hidden;
             transition: all 0.75s $ease-out-quart;
 
-            &.highest-z {
+            &.second-highest-z {
+                // filter: blur(4px);
                 z-index: 2;
+            }
+
+            &.highest-z {
+                z-index: 3;
             }
 
             &.scale-down {
@@ -39,6 +44,8 @@
 
             .page-background {
                 position: relative;
+                width: 100%;
+                height: 100%;
                 top: 0%;
 
                 &.hide-up {
@@ -76,8 +83,14 @@
                 background: url('/assets/img/keyboard-headphones.jpg') no-repeat center center;
                 background-size: cover;
                 display: block;
-                width: 100%;
-                height: 100%;
+            }
+        }
+
+        &#work-page {
+            .page-background {
+                background: url('/assets/img/focused.jpg') no-repeat center center;
+                background-size: cover;
+                display: block;
             }
         }
 
@@ -85,10 +98,7 @@
             .page-background {
                 background: url('/assets/img/focused-bw.jpg') no-repeat center center;
                 background-size: cover;
-                position: fixed;
                 display: block;
-                width: 100%;
-                height: 100%;
             }
         }
 
@@ -96,11 +106,15 @@
             margin: 0;
             z-index: 3;
             transition: opacity 0.75s $ease-out-quart;
-            @media (min-width: 768px) {
+            @media (min-width: $screen-sm) {
                 margin-left: auto;
                 margin-right: auto;
-                padding-left: 50px;
-                padding-right: 50px;
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            @media (min-width: $screen-md) {
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
             p {
