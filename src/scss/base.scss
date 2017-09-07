@@ -5,12 +5,47 @@ html {
 
 body {
     font-family: $open-sans-light;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
-    background: #000000;
-    color: #ffffff;
+    background: $dark;
+    color: $light;
     @media (min-width: $screen-sm) {
         font-size: 16px;
+    }
+}
+
+main {
+    min-height: 100vh;
+}
+
+section {
+    z-index: 1;
+
+    &.active {
+        z-index: 2;
+    }
+
+    &.hide-up {
+        transition: all 0.75s $ease-in-out-quart;
+        top: -25%;
+    }
+
+    &.hide-down {
+        transition: all 0.75s $ease-in-out-quart;
+        top: 25%;
+    }
+
+    &.above {
+        top: -100% !important;
+    }
+
+    &.below {
+        top: 100% !important;
+    }
+
+    &.slide-in {
+        transition: all 0.75s $ease-in-out-quart;
+        top: 0% !important;
     }
 }
 
@@ -38,9 +73,9 @@ h1 {
         left: 0px;
         width: 100%;
         height: 105%;
-        background: #000000;
+        background: $dark;
         z-index: 4;
-        transition: all 0.75s $ease-in-quart;
+        transition: all 0.5s $ease-in-quart;
     }
 
     &.loaded {
@@ -57,9 +92,9 @@ h1 {
             left: 0px;
             width: 100%;
             height: 105%;
-            background: #ffffff;
+            background: $light;
             z-index: 4;
-            transition: all 0.75s $ease-in-quart;
+            transition: all 0.5s $ease-in-quart;
         }
     
         &.loaded {
@@ -67,5 +102,64 @@ h1 {
                 top: -105% !important;
             }
         }
+    }
+}
+
+.button {
+    font-family: $lato;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border: 1px solid $light;
+    color: $light;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 5px 24px 6px;
+    cursor: pointer;
+    z-index: 1;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $dark;
+        transition: 0.5s $ease-out-quart;
+        transition-delay: 0.15s;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $dark-cyan;
+        transition: 0.5s $ease-out-quart;
+        transition-delay: 0s;
+    }
+
+    &:hover {        
+        &:before {
+            left: 0px;
+            transition-delay: 0s;
+        }
+
+        &:after {
+            left: 0px;
+            transition-delay: 0.15s;
+        }
+    }
+
+    .inner {
+        position: relative;
+        text-align: center;
+        z-index: 2;
     }
 }
