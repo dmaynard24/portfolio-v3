@@ -42,6 +42,17 @@
                 transform: scale(0.75);
             }
 
+            &.loading {
+                overflow: visible;
+
+                &:after {
+                    width: 105%;
+                    height: 105%;
+                    top: -2%;
+                    left: -2%;
+                }
+            }
+
             .page-background {
                 position: relative;
                 width: 100%;
@@ -119,7 +130,10 @@
 
             p {
                 padding-left: 5px;
-                max-width: 580px;
+                max-width: 430px;
+                @media (min-width: $screen-sm) {
+                    max-width: 580px;
+                }
                 &:after {
                     transition-delay: 0.25s;
                 }
