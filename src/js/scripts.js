@@ -143,6 +143,19 @@ $(function() {
 
         setTimeout(function() {
             $('section.work').addClass('slide-in').removeClass('below').addClass('active');
+            // setTimeout(function() {
+            //     $('.work .grid-item').each(function(i) {
+            //         var delay = ((i + 1) * 50);
+            //         var _this = $(this);
+            //         setTimeout(function() {
+            //             addClassLoaded(_this);
+            //         }, delay);
+            //     });
+            // }, 700);
         }, 1);
     });
+
+    // function addClassLoaded(el) {
+    //     el.addClass('loaded');
+    // }
 });
