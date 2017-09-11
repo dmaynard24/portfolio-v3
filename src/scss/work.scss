@@ -23,6 +23,8 @@
             text-align: center;
             float: left;
             filter: grayscale(100%);
+            cursor: pointer;
+            transition: filter 0.75s $ease-out-quart;
             @media (min-width: $screen-md) {
                 width: 33.33333%;
                 height: 50%;
@@ -56,6 +58,10 @@
             &#canoe-thumb {
                 background: url('/assets/img/work-heros/canoe-hero.jpg') center center no-repeat;
                 background-size: cover;
+            }
+
+            &:hover {
+                filter: grayscale(0%);
             }
 
             .item-title {
