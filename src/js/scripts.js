@@ -139,23 +139,25 @@ $(function() {
     $('#view-work-button').on('click touch', function() {
         $('.page-background').addClass('hide-up');
         $('section.fullscreen').addClass('hide-up').removeClass('active');
-        $('section.work').addClass('below');
+        // $('section.work').addClass('below');
 
-        setTimeout(function() {
-            $('section.work').addClass('slide-in').removeClass('below').addClass('active');
-            // setTimeout(function() {
-            //     $('.work .grid-item').each(function(i) {
-            //         var delay = ((i + 1) * 50);
-            //         var _this = $(this);
-            //         setTimeout(function() {
-            //             addClassLoaded(_this);
-            //         }, delay);
-            //     });
-            // }, 700);
-        }, 1);
+        $('section.work').addClass('slide-in').removeClass('below').addClass('active');
+
+        // setTimeout(function() {
+        //     $('section.work').addClass('slide-in').removeClass('below').addClass('active');
+        //     // setTimeout(function() {
+        //     //     $('.work .grid-item').each(function(i) {
+        //     //         var delay = ((i + 1) * 50);
+        //     //         var _this = $(this);
+        //     //         setTimeout(function() {
+        //     //             addClassLoaded(_this);
+        //     //         }, delay);
+        //     //     });
+        //     // }, 700);
+        // }, 1);
     });
 
-    // function addClassLoaded(el) {
-    //     el.addClass('loaded');
-    // }
+    function addClassLoaded(el) {
+        el.addClass('loaded');
+    }
 });
