@@ -146,6 +146,8 @@ $(function() {
         setTimeout(function() {
             $('section.fullscreen, .page-background').removeClass('hide-up').addClass('above');
             $('section.work').removeClass('slide-in');
+            
+            $('.up-arrow').addClass('active');
         }, 750);
 
         // setTimeout(function() {
@@ -170,6 +172,7 @@ $(function() {
         $('section.work').addClass('hide-down').removeClass('active');
         $('section.fullscreen').addClass('slide-in').removeClass('above').addClass('active');
         $('.page-background').addClass('slide-in').removeClass('above');
+        $('.up-arrow').removeClass('active');
 
         setTimeout(function() {
             $('section.work').removeClass('hide-down').addClass('below');

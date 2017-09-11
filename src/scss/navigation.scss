@@ -42,7 +42,10 @@ nav {
             width: 20px;
             height: 20px;
             transform: translateX(-50%) rotate(135deg);
+            opacity: 0;
             cursor: pointer;
+            pointer-events: none;
+            transition: opacity 0.75s $ease-out-quart;
 
             &:before {
                 content: '';
@@ -53,6 +56,11 @@ nav {
                 height: 100%;
                 border-left: 2px solid $light;
                 border-bottom: 2px solid $light;
+            }
+
+            &.active {
+                opacity: 1;
+                pointer-events: auto;
             }
         }
 
