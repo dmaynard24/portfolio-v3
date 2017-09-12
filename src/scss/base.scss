@@ -19,7 +19,9 @@ main {
 }
 
 section {
+    position: relative;
     z-index: 1;
+    transform: translateY(0%) !important;
     will-change: transform;
 
     &.active {
@@ -27,13 +29,15 @@ section {
     }
 
     &.hide-up {
+        z-index: 1;
         transition: all 0.75s $ease-in-out-quart;
-        transform: translateY(-25%);
+        transform: translateY(-25%) !important;
     }
 
     &.hide-down {
+        z-index: 1;
         transition: all 0.75s $ease-in-out-quart;
-        transform: translateY(25%);
+        transform: translateY(25%) !important;
     }
 
     &.above {
@@ -45,6 +49,7 @@ section {
     }
 
     &.slide-in {
+        z-index: 2;
         transition: all 0.75s $ease-in-out-quart;
         transform: translateY(0%) !important;
     }
@@ -126,11 +131,12 @@ h1 {
         content: '';
         position: absolute;
         top: 0px;
-        left: -100%;
+        left: 0px;
         width: 100%;
         height: 100%;
         background: $dark;
-        transition: 0.5s $ease-out-quart;
+        transform: translateX(-100%);
+        transition: transform 0.5s $ease-out-quart;
         transition-delay: 0.15s;
     }
 
@@ -138,22 +144,23 @@ h1 {
         content: '';
         position: absolute;
         top: 0px;
-        left: -100%;
+        left: 0px;
         width: 100%;
         height: 100%;
         background: $dark-cyan;
-        transition: 0.5s $ease-out-quart;
+        transform: translateX(-100%);
+        transition: transform 0.5s $ease-out-quart;
         transition-delay: 0s;
     }
 
     &:hover {        
         &:before {
-            left: 0px;
+            transform: translateX(0%);
             transition-delay: 0s;
         }
 
         &:after {
-            left: 0px;
+            transform: translateX(0%);
             transition-delay: 0.15s;
         }
     }

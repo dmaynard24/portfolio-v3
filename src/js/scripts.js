@@ -1,8 +1,7 @@
 $(function() {
-    var loading = true;
-    var pageNumber = 1;
-    var pageCount = $('.page').length;
-    var sectionNumber = 1;
+    var loading = true,
+        pageNumber = 1,
+        sectionNumber = 1;
 
     function onLoad() {
         $('.page-background-container.loading').addClass('loaded');
@@ -71,7 +70,7 @@ $(function() {
                     return false;
                 }
             } else if (direction == 'down') {
-                if (pageNumber < pageCount) {
+                if (pageNumber < $('.page').length) {
                     pageNumber++;
                 } else {
                     return false;
@@ -129,6 +128,54 @@ $(function() {
         }
     }
 
+    function snapToSection(direction) {
+        // reset
+        $('section').removeClass('hide-up').removeClass('hide-down').removeClass('above').removeClass('below').removeClass('slide-in');
+
+        var lastSectionNumber = sectionNumber;
+        if (direction == 'up') {
+            if (sectionNumber > 1) {
+                sectionNumber--;
+            } else {
+                return false;
+            }
+        } else if (direction == 'down') {
+            if (sectionNumber < $('section').length) {
+                sectionNumber++;
+            } else {
+                return false;
+            }
+        }
+
+        var lastSection = $('section[data-section-number="' + lastSectionNumber + '"]');
+        var section = $('section[data-section-number="' + sectionNumber + '"]');
+
+        lastSection.removeClass('active');
+        section.addClass('active');
+
+        // set position
+        if (direction == 'up') {
+            section.addClass('above');
+        } else {
+            section.addClass('below');
+        }
+
+        setTimeout(function() {
+            if (direction == 'up') {
+                lastSection.addClass('hide-down');
+            } else {
+                lastSection.addClass('hide-up');
+            }
+            section.addClass('slide-in');
+        }, 100);
+
+        if (sectionNumber !== 1) {
+            $('.up-arrow').addClass('active');
+        } else {
+            $('.up-arrow').removeClass('active');
+        }
+    }
+
     $(window).resize(function() {
         if ($('section.fullscreen').hasClass('active')) {
             var scrollTo = $('.page[data-page-number="' + pageNumber + '"]')[0].offsetTop;
@@ -139,44 +186,14 @@ $(function() {
     });
 
     $('#view-work-button').on('click touch', function() {
-        $('.page-background').addClass('hide-up');
-        $('section.fullscreen').addClass('hide-up').removeClass('active');
-        $('section.work').addClass('slide-in').removeClass('below').addClass('active');
+        snapToSection('down');
+    });
 
-        setTimeout(function() {
-            $('section.fullscreen, .page-background').removeClass('hide-up').addClass('above');
-            $('section.work').removeClass('slide-in');
-            
-            $('.up-arrow').addClass('active');
-        }, 750);
-
-        // setTimeout(function() {
-        //     $('section.work').addClass('slide-in').removeClass('below').addClass('active');
-        //     // setTimeout(function() {
-        //     //     $('.work .grid-item').each(function(i) {
-        //     //         var delay = ((i + 1) * 50);
-        //     //         var _this = $(this);
-        //     //         setTimeout(function() {
-        //     //             addClassLoaded(_this);
-        //     //         }, delay);
-        //     //     });
-        //     // }, 700);
-        // }, 1);
+    $('.up-arrow').on('click touch', function() {
+        snapToSection('up');
     });
 
     function addClassLoaded(el) {
         el.addClass('loaded');
     }
-
-    $('.up-arrow').on('click touch', function() {
-        $('section.work').addClass('hide-down').removeClass('active');
-        $('section.fullscreen').addClass('slide-in').removeClass('above').addClass('active');
-        $('.page-background').addClass('slide-in').removeClass('above');
-        $('.up-arrow').removeClass('active');
-
-        setTimeout(function() {
-            $('section.work').removeClass('hide-down').addClass('below');
-            $('section.fullscreen, .page-background').removeClass('slide-in');
-        }, 750);
-    });
 });
