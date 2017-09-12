@@ -20,6 +20,8 @@ $(function() {
         onLoad();
     });
 
+    onLoad();
+
     var lastPageChangeTime = 0;
     $(window).bind('mousewheel wheel', function(e) {
         var time = Math.round(e.timeStamp);
@@ -177,11 +179,9 @@ $(function() {
     }
 
     $(window).resize(function() {
-        if ($('section.fullscreen').hasClass('active')) {
-            var scrollTo = $('.page[data-page-number="' + pageNumber + '"]')[0].offsetTop;
-            if (scrollTo !== 0) {
-                $('.fullscreen').scrollTop(scrollTo);
-            }
+        var scrollTo = $('.page[data-page-number="' + pageNumber + '"]')[0].offsetTop;
+        if (scrollTo !== 0) {
+            $('.fullscreen').scrollTop(scrollTo);
         }
     });
 

@@ -22,7 +22,7 @@
             justify-content: center;
             text-align: center;
             float: left;
-            filter: grayscale(100%);
+            // filter: grayscale(100%);
             cursor: pointer;
             transition: filter 0.75s $ease-out-quart;
             @media (min-width: $screen-md) {
