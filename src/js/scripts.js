@@ -3,13 +3,6 @@ $(function() {
         pageNumber = 1,
         sectionNumber = 1;
 
-    function onInit() {
-        $('.page-background-container').addClass('scale-down');
-        $('.page-background-container').first().addClass('highest-z').addClass('loading');
-    }
-
-    onInit();
-
     function onLoad() {
         $('.page-background-container.loading').addClass('loaded');
 
