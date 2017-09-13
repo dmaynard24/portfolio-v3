@@ -20,12 +20,11 @@ $(function() {
         onLoad();
     });
 
-    onLoad();
-
     var lastPageChangeTime = 0;
-    $(window).bind('mousewheel wheel', function(e) {
+    $(window).bind('wheel', function(e) {
         var time = Math.round(e.timeStamp);
-        if (e.originalEvent.wheelDelta > 0) {
+        var delta = e.originalEvent.wheelDelta || (e.originalEvent.deltaY * -1);
+        if (delta > 0) {
             snapToPage('up', time);
         } else {
             snapToPage('down', time);
