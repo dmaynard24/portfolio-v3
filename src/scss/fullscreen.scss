@@ -6,16 +6,15 @@
     height: 100%;
     padding: 0;
     overflow: hidden;
-    will-change: scroll-position;
 
     .page {
+        position: relative;
         width: 100%;
         height: 100%;
         background: $dark;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        position: relative;
         @media (min-width: $screen-sm) {
             justify-content: center;
         }
@@ -60,6 +59,7 @@
                 width: 100%;
                 height: 100%;
                 transform: translateY(0%);
+                transition: transform 0.75s $ease-in-out-quart;
                 will-change: transform;
 
                 &.hide-up {
@@ -73,10 +73,12 @@
                 }
 
                 &.above {
+                    transition: all 0s $ease-in-out-quart;
                     transform: translateY(-100%) !important;
                 }
 
                 &.below {
+                    transition: all 0s $ease-in-out-quart;
                     transform: translateY(100%) !important;
                 }
 
