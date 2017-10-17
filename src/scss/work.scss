@@ -8,64 +8,261 @@
     overflow: hidden;
     background: $dark;
     
-    .work-grid {
+    .work-showcase {
         position: relative;
         width: 100%;
         height: 100%;
 
-        .grid-item {
-            position: relative;
-            width: 50%;
-            height: 33.33333%;
+        .work-showcase-overlay {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background: $dark;
+            opacity: 0.3;
+            z-index: 4;
+        }
+
+        .work-showcase-bg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.75s $ease-out-quart;
+            transform: scale(1, 1);
+            z-index: 1;
+
+            &.highest-z {
+                z-index: 3;
+            }
+
+            &.second-highest-z {
+                z-index: 2;
+            }
+
+            &.scale-up {
+                transition: transform 0s $ease-out-quart;
+                transform: scale(1.25, 1.25);
+            }
+
+            &#sagepath-bg {
+                // background: url('/assets/img/work-heros/sagepath-hero.jpg') center center no-repeat;
+                // background-size: cover;
+
+                .slice .slice-bg {
+                    background: url('/assets/img/work-heros/sagepath-hero.jpg') center center no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            &#pulte-bg {
+                // background: url('/assets/img/work-heros/pulte-hero.jpg') center center no-repeat;
+                // background-size: cover;
+
+                .slice .slice-bg {
+                    background: url('/assets/img/work-heros/pulte-hero.jpg') center center no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            &#home-depot-bg {
+                // background: url('/assets/img/work-heros/home-depot-hero.jpg') center center no-repeat;
+                // background-size: cover;
+
+                .slice .slice-bg {
+                    background: url('/assets/img/work-heros/home-depot-hero.jpg') center center no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            &#ascot-bg {
+                // background: url('/assets/img/work-heros/ascot-hero.jpg') center center no-repeat;
+                // background-size: cover;
+
+                .slice .slice-bg {
+                    background: url('/assets/img/work-heros/ascot-hero.jpg') center center no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            &#rit-bg {
+                // background: url('/assets/img/work-heros/directory-hero.jpg') center center no-repeat;
+                // background-size: cover;
+
+                .slice .slice-bg {
+                    background: url('/assets/img/work-heros/directory-hero.jpg') center center no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            &#canoe-bg {
+                // background: url('/assets/img/work-heros/canoe-hero.jpg') center center no-repeat;
+                // background-size: cover;
+
+                .slice .slice-bg {
+                    background: url('/assets/img/work-heros/canoe-hero.jpg') center center no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            .slice {
+                position: relative;
+                width: 50%;
+                height: 50%;
+                float: left;
+                overflow: hidden;
+
+                &:nth-of-type(1) {
+                    &.slide-in {
+                        .slice-bg {
+                            transform: translateX(51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+
+                    &.slide-out {
+                        .slice-bg {
+                            transform: translateY(51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+                }
+
+                &:nth-of-type(2) {
+                    .slice-bg {
+                        left: -100%;
+                    }
+
+                    &.slide-in {
+                        .slice-bg {
+                            transform: translateY(51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+
+                    &.slide-out {
+                        .slice-bg {
+                            transform: translateX(-51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+                }
+
+                &:nth-of-type(3) {
+                    .slice-bg {
+                        top: -100%;
+                    }
+
+                    &.slide-in {
+                        .slice-bg {
+                            transform: translateY(-51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+
+                    &.slide-out {
+                        .slice-bg {
+                            transform: translateX(51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+                }
+
+                &:nth-of-type(4) {
+                    .slice-bg {
+                        top: -100%;
+                        left: -100%;
+                    }
+
+                    &.slide-in {
+                        .slice-bg {
+                            transform: translateX(-51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+
+                    &.slide-out {
+                        .slice-bg {
+                            transform: translateY(-51%);
+                            transition: transform 0.75s $ease-out-quart;
+                        }
+                    }
+                }
+
+                .slice-bg {
+                    position: relative;
+                    top: 0px;
+                    left: 0px;
+                    width: 200%;
+                    height: 200%;
+                    transition: transform 0s $ease-out-quart;
+                }
+            }
+        }
+
+        .showcase-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            float: left;
-            // filter: grayscale(100%);
-            cursor: pointer;
-            transition: filter 0.75s $ease-out-quart;
-            @media (min-width: $screen-md) {
-                width: 33.33333%;
-                height: 50%;
+            z-index: 5;
+
+            &.active {
+                .showcase-content-inner {
+                    visibility: visible;
+
+                    h2 {
+                        transition: all 0.25s $ease-out-quart;
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+
+                    .date {
+                        transition: all 0.25s $ease-out-quart;
+                        transition-delay: 0.25s;
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+
+                    .copy {
+                        transition: all 0.25s $ease-out-quart;
+                        transition-delay: 0.5s;
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+                }
             }
 
-            &#sagepath-thumb {
-                background: url('/assets/img/work-heros/sagepath-hero.jpg') center center no-repeat;
-                background-size: cover;
-            }
+            .showcase-content-inner {
+                visibility: hidden;
+                text-align: center;
+                width: 100%;
+                max-width: 540px;
+                padding: 0px 40px;
 
-            &#pulte-thumb {
-                background: url('/assets/img/work-heros/pulte-hero.jpg') center center no-repeat;
-                background-size: cover;
-            }
+                h2 {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
 
-            &#home-depot-thumb {
-                background: url('/assets/img/work-heros/home-depot-hero.jpg') center center no-repeat;
-                background-size: cover;
-            }
+                .date {
+                    letter-spacing: 5px;
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
 
-            &#ascot-thumb {
-                background: url('/assets/img/work-heros/ascot-hero.jpg') center center no-repeat;
-                background-size: cover;
-            }
-
-            &#rit-thumb {
-                background: url('/assets/img/work-heros/directory-hero.jpg') center center no-repeat;
-                background-size: cover;
-            }
-
-            &#canoe-thumb {
-                background: url('/assets/img/work-heros/canoe-hero.jpg') center center no-repeat;
-                background-size: cover;
-            }
-
-            &:hover {
-                filter: grayscale(0%);
-            }
-
-            .item-title {
-                display: none;
+                .copy {
+                    opacity: 0;
+                    transform: translateY(10px);
+                    max-width: 400px;
+                    margin: auto;
+                }
             }
         }
     }

@@ -61,11 +61,28 @@ h1 {
         font-size: 56px;
         display: inline-block;
         margin: 0;
+        margin-bottom: 20px;
 
         @media (min-width: $screen-sm) {
             font-size: 80px;
         }
     }
+}
+
+h2 {
+    font-family: $lato;
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-sm) {
+        font-size: 56px;
+    }
+}
+
+p {
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 .loading {
